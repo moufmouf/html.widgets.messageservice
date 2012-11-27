@@ -1,0 +1,30 @@
+{
+    "name": "mouf/html.widgets.messageservice",
+    "description": "Use this package to display info/warning/error messages to the user on a web page. Using the SessionMessageService class, you register messages to be displayed. Using the MessageWidget class, you display the error messages in your templates.",
+    "keywords": [ "mouf", "messageservice", "message","widget","widgets"],
+    "homepage": "http://twitter.github.com/bootstrap/",
+    "type": "mouf-library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Négrier",
+            "email": "d.negrier@thecodingmachine.com",
+            "homepage": "http://mouf-php.com"
+        }
+    ],
+    "require": {
+    	"php": ">=5.3.0",
+    	"mouf/html.widgets.messageservice",">=2.0-dev,<3.0",
+    },
+    "autoload": {
+        "psr-0": {
+            "Mouf": "src/"
+        },
+        "files": ["src/common_functions.php"]
+    },
+    "mouf": {
+    	"install": {
+    		"src/install.php":"file"
+    	}
+    }
+}
