@@ -2,17 +2,21 @@
 // First, let's request the install utilities
 require_once '../../../../../mouf/actions/InstallUtils.php';
 
+use Mouf\MoufManager;
+
+use Mouf\Actions\InstallUtils;
+
 // Let's init Mouf
 InstallUtils::init(InstallUtils::$INIT_APP);
 
 // Let's create the instance
 $moufManager = MoufManager::getMoufManager();
 if (!$moufManager->instanceExists("userMessageService")) {
-	$moufManager->declareComponent("userMessageService", "SessionMessageService");
+	$moufManager->declareComponent("userMessageService", "Mouf\Html\Widgets\MessageService\Service\SessionMessageService");
 }
 
 if (!$moufManager->instanceExists("messageWidget")) {
-	$moufManager->declareComponent("messageWidget", "MessageWidget");
+	$moufManager->declareComponent("messageWidget", "Mouf\Html\Widgets\MessageService\Widget\MessageWidget");
 	$moufManager->bindComponent("messageWidget", "messageProvider", "userMessageService");
 }
 
