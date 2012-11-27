@@ -1,6 +1,4 @@
 <?php
-// First, let's request the install utilities
-require_once '../../../../../mouf/actions/InstallUtils.php';
 
 use Mouf\MoufManager;
 
