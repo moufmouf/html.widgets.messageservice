@@ -1,4 +1,8 @@
 <?php
+use Mouf\MoufManager;
+
+use Mouf\Html\Widgets\MessageService\Service\UserMessageInterface;
+
 
 /**
  * Sets a message to be displayed to a user.
