@@ -1,4 +1,6 @@
 <?php
+use Mouf\Html\Utils\WebLibraryManager\WebLibraryInstaller;
+
 require_once __DIR__."/../../../autoload.php";
 
 use Mouf\MoufManager;
@@ -25,7 +27,7 @@ if (!$moufManager->instanceExists("messageServiceLibrary")) {
 }
 
 
-//Create a weblibraray for loading message services(s css file, and add it into the defaultWebLibrary Manager
+//Create a weblibrary for loading message services css file, and add it into the defaultWebLibrary Manager
 WebLibraryInstaller::installLibrary("messageServiceLibrary",
 	array(),
 	array('vendor/mouf/html.widgets.messageservice/messages.css'),
