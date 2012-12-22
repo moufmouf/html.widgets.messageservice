@@ -13,19 +13,23 @@ InstallUtils::init(InstallUtils::$INIT_APP);
 // Let's create the instance
 $moufManager = MoufManager::getMoufManager();
 if (!$moufManager->instanceExists("userMessageService")) {
-	$moufManager->declareComponent("userMessageService", "Mouf\\Html\\Widgets\\MessageService\\Service\\SessionMessageService");
+	$userMessageService = $moufManager->createInstance("Mouf\\Html\\Widgets\\MessageService\\Service\\SessionMessageService");
+	$userMessageService->setName("userMessageService");
 }
 
 if (!$moufManager->instanceExists("messageWidget")) {
-	$moufManager->declareComponent("messageWidget", "Mouf\\Html\\Widgets\\MessageService\\Widget\MessageWidget");
-	$moufManager->bindComponent("messageWidget", "messageProvider", "userMessageService");
+	$messageWidget = $moufManager->createInstance("Mouf\\Html\\Widgets\\MessageService\\Widget\MessageWidget");
+	$messageWidget->setName("messageWidget");
+	$messageWidget->getProperty("messageProvider")->setValue($userMessageService);
 }
 
-if (!$moufManager->instanceExists("messageServiceLibrary")) {
-	$moufManager->declareComponent("messageServiceLibrary", "Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary");
-	$moufManager->bindComponent("messageWidget", "messageProvider", "userMessageService");
+// Let's add the widget to the main block if available.
+if ($moufManager->instanceExists("block.content")) {
+	$contentBlock = $moufManager->getInstanceDescriptor("block.content");
+	$arr = $contentBlock->getProperty("children")->getValue();
+	$arr[] = $messageWidget;
+	$contentBlock->getProperty("children")->setValue($arr);
 }
-
 
 //Create a weblibrary for loading message services css file, and add it into the defaultWebLibrary Manager
 WebLibraryInstaller::installLibrary("messageServiceLibrary",
