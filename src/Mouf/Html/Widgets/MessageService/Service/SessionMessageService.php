@@ -2,6 +2,8 @@
 
 namespace Mouf\Html\Widgets\MessageService\Service;
 
+use Mouf\Utils\Sesssion\SessionManager\SessionManagerInterface;
+
 /**
  * The SessionMessageService is a class that registers message to be displayed to the user.
  * Using its "setMessage" method, you register a message, and this message will be displayed later to the user.
@@ -25,6 +27,15 @@ class SessionMessageService implements MessageProviderInterface {
 	public $sessionKey = "MOUF_USER_MESSAGES";
 	
 	/**
+	 * The session manager used to access the session.
+	 * If no session manager is set, the developer will have to ensure itself that the session
+	 * is started before calling the session message service.
+	 * 
+	 * @var SessionManagerInterface
+	 */
+	public $sessionManager;
+	
+	/**
 	 * Sets a message to be displayed to a user.
 	 *
 	 * @param string $html The message to be displayed, as a HTML string.
@@ -38,6 +49,11 @@ class SessionMessageService implements MessageProviderInterface {
 		
 		$message = array("message"=>$html,
 						 "type"=>$type);
+		
+		if ($this->sessionManager) {
+			$this->sessionManager->start();
+		}
+		
 		$_SESSION[$this->sessionKey][$category][] = $message;
 	}
 	
@@ -49,6 +65,10 @@ class SessionMessageService implements MessageProviderInterface {
 	function purgeMessages($category = NULL) {
 		if ($category == null) {
 			$category = "mouf_usermessageservice_global";
+		}
+		
+		if ($this->sessionManager) {
+			$this->sessionManager->start();
 		}
 		
 		unset($_SESSION[$this->sessionKey][$category]);
@@ -66,6 +86,10 @@ class SessionMessageService implements MessageProviderInterface {
 		}
 		
 		$messages = array();
+		
+		if ($this->sessionManager) {
+			$this->sessionManager->start();
+		}
 		
 		if (isset($_SESSION[$this->sessionKey][$category])) {
 			foreach ($_SESSION[$this->sessionKey][$category] as $messageArray) {

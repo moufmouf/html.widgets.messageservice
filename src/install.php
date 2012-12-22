@@ -31,6 +31,12 @@ if ($moufManager->instanceExists("block.content")) {
 	$contentBlock->getProperty("children")->setValue($arr);
 }
 
+// Let's bind the userMessageService to the sessionManager (if it exists).
+if ($moufManager->instanceExists("sessionManager")) {
+	$sessionManager = $moufManager->getInstanceDescriptor("sessionManager");
+	$userMessageService->getProperty("sessionManager")->setValue($sessionManager);
+}
+
 // Create a weblibrary for loading message services css file, and add it into the defaultWebLibrary Manager
 WebLibraryInstaller::installLibrary("messageServiceLibrary",
 	array(),
