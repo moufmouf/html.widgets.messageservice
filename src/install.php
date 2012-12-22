@@ -31,7 +31,7 @@ if ($moufManager->instanceExists("block.content")) {
 	$contentBlock->getProperty("children")->setValue($arr);
 }
 
-//Create a weblibrary for loading message services css file, and add it into the defaultWebLibrary Manager
+// Create a weblibrary for loading message services css file, and add it into the defaultWebLibrary Manager
 WebLibraryInstaller::installLibrary("messageServiceLibrary",
 	array(),
 	array('vendor/mouf/html.widgets.messageservice/messages.css'),
