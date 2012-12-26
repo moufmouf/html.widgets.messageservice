@@ -12,10 +12,8 @@ InstallUtils::init(InstallUtils::$INIT_APP);
 
 // Let's create the instance
 $moufManager = MoufManager::getMoufManager();
-if (!$moufManager->instanceExists("userMessageService")) {
-	$userMessageService = $moufManager->createInstance("Mouf\\Html\\Widgets\\MessageService\\Service\\SessionMessageService");
-	$userMessageService->setName("userMessageService");
-}
+
+$userMessageService = InstallUtils::getOrCreateInstance("userMessageService", "Mouf\\Html\\Widgets\\MessageService\\Service\\SessionMessageService", $moufManager);
 
 if (!$moufManager->instanceExists("messageWidget")) {
 	$messageWidget = $moufManager->createInstance("Mouf\\Html\\Widgets\\MessageService\\Widget\MessageWidget");
