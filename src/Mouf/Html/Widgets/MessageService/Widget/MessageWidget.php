@@ -18,11 +18,17 @@ class MessageWidget implements HtmlElementInterface {
 	/**
 	 * The object that will return the messages to be displayed.
 	 * 
-	 * @Property
-	 * @Compulsory
 	 * @var MessageProviderInterface
 	 */
 	public $messageProvider;
+	
+
+	/**
+	 * Message renderer
+	 *
+	 * @var MessageRendererInterface
+	 */
+	public $messageRenderer;
 	
 	/**
 	* Renders the messages in HTML.
@@ -51,16 +57,7 @@ class MessageWidget implements HtmlElementInterface {
 		
 		foreach ($toDisplayMessages as $message) {
 			/* @var $message UserMessageInterface */
-			$html = $message->getMessage();
-			$type = $message->getType();
-			
-			echo "<div class='".$type."'>";
-			echo $html;
-			if ($invertedMessages[$html]["nbOccurences"] > 1) {
-				// TODO: translate this.
-				echo " (message repeated ".$invertedMessages[$html]["nbOccurences"]." times)";
-			}
-			echo "</div>";
+			$this->messageRenderer->render($message);
 		}
 	}
 }
