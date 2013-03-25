@@ -12,6 +12,7 @@ interface MessageRendererInterface {
 	/**
 	 * Display alert/error message
 	 * @param UserMessageInterface $message
+	 * @param int $nbRepeat Nb occurence of message
 	 */
-	function render(UserMessageInterface $message);
+	function render(UserMessageInterface $message, $nbRepeat);
 }
