@@ -55,9 +55,11 @@ class MessageWidget implements HtmlElementInterface {
 			}
 		}
 		
-		foreach ($toDisplayMessages as $message) {
-			/* @var $message UserMessageInterface */
-			$this->messageRenderer->render($message, $invertedMessages[$html]['nbOccurences']);
+		if($this->messageRenderer) { 
+			foreach ($toDisplayMessages as $message) {
+				/* @var $message UserMessageInterface */
+				$this->messageRenderer->render($message, $invertedMessages[$html]['nbOccurences']);
+			}
 		}
 	}
 }
