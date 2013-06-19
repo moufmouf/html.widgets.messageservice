@@ -1,7 +1,7 @@
 <?php
-
 namespace Mouf\Html\Widgets\MessageService\Widget;
 
+use Mouf\Html\Widgets\MessageService\Service\MessageProviderInterface;
 use Mouf\Html\HtmlElement\HtmlElementInterface;
 use Mouf\Html\Widgets\MessageService\Service;
 
