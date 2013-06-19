@@ -2,9 +2,10 @@
 
 namespace Mouf\Html\Widgets\MessageService\Widget;
 
+use Mouf\Html\Widgets\MessageService\Service\MessageProviderInterface;
+
 use Mouf\Html\HtmlElement\HtmlElementInterface;
 use Mouf\Html\Widgets\MessageService\Service;
-
 /**
  * The MessageWidget is in charge of displaying HTML messages.
  * Those messages are registered using an object implementing the MessageProviderInterface object.
