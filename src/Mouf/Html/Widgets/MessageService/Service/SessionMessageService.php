@@ -2,7 +2,7 @@
 
 namespace Mouf\Html\Widgets\MessageService\Service;
 
-use Mouf\Utils\Sesssion\SessionManager\SessionManagerInterface;
+use Mouf\Utils\Session\SessionManager\SessionManagerInterface;
 
 /**
  * The SessionMessageService is a class that registers message to be displayed to the user.
