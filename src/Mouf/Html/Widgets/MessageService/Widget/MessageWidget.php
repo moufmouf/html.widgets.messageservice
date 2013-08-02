@@ -21,19 +21,11 @@ class MessageWidget implements HtmlElementInterface {
 	 * @var MessageProviderInterface
 	 */
 	public $messageProvider;
-	
 
 	/**
-	 * Message renderer
-	 *
-	 * @var MessageRendererInterface
+	 * Renders the messages in HTML.
+	 * The Html is echoed directly into the output.
 	 */
-	public $messageRenderer;
-	
-	/**
-	* Renders the messages in HTML.
-	* The Html is echoed directly into the output.
-	*/
 	public function toHtml() {
 		
 		// An array of messages where the message is the KEY and the value is array("type"=>$type, "nbOccurences"=>$nbOcc).
@@ -54,12 +46,11 @@ class MessageWidget implements HtmlElementInterface {
 				$toDisplayMessages[] = $message;
 			}
 		}
-		
-		if($this->messageRenderer) { 
-			foreach ($toDisplayMessages as $message) {
-				/* @var $message UserMessageInterface */
-				$this->messageRenderer->render($message, $invertedMessages[$html]['nbOccurences']);
-			}
+ 
+		foreach ($toDisplayMessages as $message) {
+			/* @var $message UserMessageInterface */
+			$renderedMessage = new RenderedMessage($message, $invertedMessages[$html]['nbOccurences']);
+			$renderedMessage->toHtml();
 		}
 	}
 }

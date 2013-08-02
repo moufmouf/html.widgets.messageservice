@@ -6,6 +6,7 @@ require_once __DIR__."/../../../autoload.php";
 use Mouf\MoufManager;
 
 use Mouf\Actions\InstallUtils;
+use Mouf\Html\Renderer\RendererUtils;
 
 // Let's init Mouf
 InstallUtils::init(InstallUtils::$INIT_APP);
@@ -15,11 +16,9 @@ $moufManager = MoufManager::getMoufManager();
 
 $userMessageService = InstallUtils::getOrCreateInstance("userMessageService", "Mouf\\Html\\Widgets\\MessageService\\Service\\SessionMessageService", $moufManager);
 
-if (!$moufManager->instanceExists("messageWidget")) {
-	$messageWidget = $moufManager->createInstance("Mouf\\Html\\Widgets\\MessageService\\Widget\\MessageWidget");
-	$messageWidget->setName("messageWidget");
-	$messageWidget->getProperty("messageProvider")->setValue($userMessageService);
-}
+$messageWidget = InstallUtils::getOrCreateInstance("messageWidget", "Mouf\\Html\\Widgets\\MessageService\\Widget\\MessageWidget", $moufManager);
+$messageWidget->setName("messageWidget");
+$messageWidget->getProperty("messageProvider")->setValue($userMessageService);
 
 if (!$moufManager->instanceExists("defaultMessageRenderer")) {
 	$defaultMessageRenderer = $moufManager->createInstance("Mouf\\Html\\Widgets\\MessageService\\Widget\\DefaultMessageRenderer");
@@ -48,6 +47,8 @@ WebLibraryInstaller::installLibrary("messageServiceLibrary",
 	array(),
 	true
 );
+
+RendererUtils::createPackageRenderer($moufManager, "mouf/html.widgets.messageservice");
 
 // Let's rewrite the MoufComponents.php file to save the component
 $moufManager->rewriteMouf();

@@ -1,0 +1,6 @@
+<div class='{{ this.userMessage.type|e('html_attr') }}'>
+{{ this.userMessage.message|raw }}
+{% if this.nbMessages > 1 %}
+ (message repeated {{ this.nbMessages }} times)
+{% endif %}
+</div>

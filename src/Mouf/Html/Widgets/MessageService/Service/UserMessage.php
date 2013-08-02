@@ -62,7 +62,7 @@ class UserMessage implements UserMessageInterface {
 	 */
 	function setType($type) {
 		if (!in_array($this->type, array(UserMessageInterface::SUCCESS, UserMessageInterface::INFO, UserMessageInterface::WARNING, UserMessageInterface::ERROR))) {
-			throw new Exception("The type of a message must be one of UserMessageInterface::SUCCESS, UserMessageInterface::INFO, UserMessageInterface::WARNING, UserMessageInterface::ERROR");
+			throw new \Exception("The type of a message must be one of UserMessageInterface::SUCCESS, UserMessageInterface::INFO, UserMessageInterface::WARNING, UserMessageInterface::ERROR");
 		}
 		
 		$this->type = $type;
