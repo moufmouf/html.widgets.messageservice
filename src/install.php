@@ -20,12 +20,6 @@ $messageWidget = InstallUtils::getOrCreateInstance("messageWidget", "Mouf\\Html\
 $messageWidget->setName("messageWidget");
 $messageWidget->getProperty("messageProvider")->setValue($userMessageService);
 
-if (!$moufManager->instanceExists("defaultMessageRenderer")) {
-	$defaultMessageRenderer = $moufManager->createInstance("Mouf\\Html\\Widgets\\MessageService\\Widget\\DefaultMessageRenderer");
-	$defaultMessageRenderer->setName("defaultMessageRenderer");
-	$messageWidget->getProperty('messageRenderer')->setValue($defaultMessageRenderer);
-}
-
 // Let's add the widget to the main block if available.
 if ($moufManager->instanceExists("block.content")) {
 	$contentBlock = $moufManager->getInstanceDescriptor("block.content");
