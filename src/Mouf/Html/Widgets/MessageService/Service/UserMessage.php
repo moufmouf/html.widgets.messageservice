@@ -2,6 +2,9 @@
 
 namespace Mouf\Html\Widgets\MessageService\Service;
 
+use Mouf\Utils\Value\ValueInterface;
+use Mouf\Utils\Value\ValueUtils;
+
 /**
  * The UserMessage class represents a message that is displayed to the user.
  * This is the most simple implementation of the UserMessageInterface interface.
@@ -26,9 +29,9 @@ class UserMessage implements UserMessageInterface {
 	/**
 	 * Cosntructor initializing all the fields.
 	 * 
-	 * @param string $message
-	 * @param string $type
-	 * @param string $category
+	 * @param string|ValueInterface $message
+	 * @param string|ValueInterface $type
+	 * @param string|ValueInterface $category
 	 */
 	public function __construct($message = null, $type = null, $category = null) {
 		$this->message = $message;
@@ -39,7 +42,7 @@ class UserMessage implements UserMessageInterface {
 	/**
 	 * Sets the message, as an HTML string to be displayed.
 	 *
-	 * @param string $message
+	 * @param string|ValueInterface $message
 	 */
 	function setMessage($message) {
 		$this->message = $message;
@@ -51,17 +54,18 @@ class UserMessage implements UserMessageInterface {
 	 * @return string
 	 */
 	function getMessage() {
-		return $this->message;
+		return ValueUtils::val($this->message);
 	}
 	
 	/**
 	 * Sets the type of the message.
 	 * Can be one of UserMessageInterface::SUCCESS, UserMessageInterface::INFO, UserMessageInterface::WARNING, or UserMessageInterface::ERROR.
 	 *
-	 * @param string $type
+	 * @param string|ValueInterface $type
 	 */
 	function setType($type) {
-		if (!in_array($this->type, array(UserMessageInterface::SUCCESS, UserMessageInterface::INFO, UserMessageInterface::WARNING, UserMessageInterface::ERROR))) {
+		$type = ValueUtils::val($type);
+		if (!in_array($type, array(UserMessageInterface::SUCCESS, UserMessageInterface::INFO, UserMessageInterface::WARNING, UserMessageInterface::ERROR))) {
 			throw new \Exception("The type of a message must be one of UserMessageInterface::SUCCESS, UserMessageInterface::INFO, UserMessageInterface::WARNING, UserMessageInterface::ERROR");
 		}
 		
@@ -81,7 +85,7 @@ class UserMessage implements UserMessageInterface {
 	/**
 	 * Sets the category for this message (or null if this is a global message).
 	 *
-	 * @param string $category
+	 * @param string|ValueInterface $category
 	 */
 	function setCategory($category) {
 		$this->category = $category;
@@ -93,6 +97,6 @@ class UserMessage implements UserMessageInterface {
 	 * @return string
 	 */
 	function getCategory() {
-		return $this->category;
+		return ValueUtils::val($this->category);
 	}
 }
