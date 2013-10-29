@@ -30,7 +30,7 @@
 	},
 	"autoload" : {
 		"psr-0" : {
-			"Mouf" : "src/"
+			"Mouf\\Html\\Widgets\\MessageService" : "src/"
 		},
 		"files" : [
 			"src/common_functions.php"
