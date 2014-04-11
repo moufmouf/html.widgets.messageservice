@@ -20,5 +20,5 @@ The ```php UserMessageInterface Interface ``` defines 4 types of message :
 By default, the message will be displayed in the header block. But you are free to insert this block anywhere.
 
 More Information can be found here :
- * [Using the message service](doc/index.html)
- * [Advanced usage](doc/advanced.html)
+ * [Using the message service](doc/index.md)
+ * [Advanced usage](doc/advanced.md)
