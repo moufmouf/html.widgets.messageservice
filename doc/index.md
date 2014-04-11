@@ -55,4 +55,4 @@ In the content section of the block, click "Add a component", then select "messa
 This new block will contain the messages. Now, you just have to connect to Drupal admin, and place the new block where you want it to be in
 your theme's layout.
 
-Want to learn more? <a href="advanced.html">Check the advanced documentation</a>.
+Want to learn more? <a href="advanced.md">Check the advanced documentation</a>.

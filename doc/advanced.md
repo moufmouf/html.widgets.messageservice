@@ -6,7 +6,7 @@ What happens when you call the ```php set_user_message ``` function?
 The ```php set_user_message ``` function is a shortcut for:
 
 ```php
-Mouf::getUserMessageService()-&gt;setMessage($html, $type, $category);
+Mouf::getUserMessageService()->setMessage($html, $type, $category);
 ```
 
 The "userMessageService" Mouf instance is an instance of the component ```php SessionMessageService ```.
