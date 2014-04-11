@@ -41,7 +41,7 @@ function, display your page using the template... **et voila!**.
 On the other end, if you are not using a template, you will have to call the message widget explicitly.
 To display the HTML, just call:
 
-```phpMouf::getMessageWidget-&gt;toHtml();```
+```php Mouf::getMessageWidget-&gt;toHtml(); ```
 
 This will display the messages for the user. You might need to import the ```php messages.css ``` file
 that contains styles to display the error messages, unless you want to provide your own styles.
