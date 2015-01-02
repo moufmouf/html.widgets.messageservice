@@ -18,7 +18,7 @@
 	"homepage" : "https://github.com/thecodingmachine/html.widgets.messageservice",
 	"license" : "MIT",
 	"require" : {
-		"mouf/html.utils.weblibrarymanager" : "~2.0",
+		"mouf/html.utils.weblibrarymanager" : "~2.0 | ~3.0",
 		"mouf/utils.session.session-manager" : "~2.0",
 		"php" : ">=5.3.0",
 		"mouf/html.renderer" : "~1.0",
