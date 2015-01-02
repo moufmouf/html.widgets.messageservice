@@ -10,7 +10,7 @@ Add a message :
 ```php
 set_user_message("User <b>foo bar</b> has been successfully cerated", UserMessageInterface::SUCCESS);
 ```
-The ```php UserMessageInterface Interface ``` defines 4 types of message :
+The `UserMessageInterface Interface` defines 4 types of message :
 
  * SUCCESS
  * INFO
