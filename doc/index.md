@@ -43,7 +43,7 @@ On the other end, if you are not using a template, you will have to call the mes
 To display the HTML, just call:
 
 ```php
-Mouf::getMessageWidget->toHtml();
+Mouf::getMessageWidget()->toHtml();
 ```
 
 This will display the messages for the user. You might need to import the `messages.css` file
